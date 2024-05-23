@@ -10,7 +10,37 @@ const CadastroLivros: React.FC = () => {
     const [editora, setEditora] = useState<string>('');
     const [sinopse, setSinopse] = useState<string>('');
     const [avaliacao, setAvaliacao] = useState<string>('');
+    const [error, setErrors] = useState<string>('');
     const [imagem, setImagem] = useState<any>('');
+
+    const validateForm = () => {
+        const newErrors: any = {};
+   
+        if (!titulo) {
+          newErrors.titulo = "O campo título é obrigatório";
+        }
+        if (!autor) {
+          newErrors.autor= "O campo autor é obrigatório";
+        }
+        if (!data_lancamento) {
+          newErrors.data_lancamento= "O campo data de lançamento é obrigatório";
+        }
+        if (!editora) {
+          newErrors.editora= "O campo editora é obrigatório";
+        }
+        if (!sinopse) {
+          newErrors.sinopse = "O campo sinopse é obrigatório";
+        }
+        if (!genero) {
+          newErrors.genero= "O campo genero é obrigatório";
+        }
+        if (!avaliacao) {
+          newErrors.avaliacao= "O campo avaliacaoé obrigatório";
+        }
+        setErrors(newErrors);
+   
+        return !Object.keys(newErrors).length;
+      };
 
     const CadastroProduto = async () => {
         try{
@@ -28,7 +58,7 @@ const CadastroLivros: React.FC = () => {
             name:new Date()+ '.jpg',
         });
 
-const response= await axios.post('http://10.137.11.217:8000/api/clientes', formData,{
+const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro', formData,{
     headers:{
         'Content-Type':'multipart/form-data'
     }
@@ -45,6 +75,8 @@ const response= await axios.post('http://10.137.11.217:8000/api/clientes', formD
             <View style={styles.header}>
             <Image source={require('../assets/images/capa.jpg')} style={styles.headerIcon} />
             </View>
+
+            <ScrollView style={styles.scroll}>
 
             <View style={styles.form}>
 
@@ -97,6 +129,10 @@ const response= await axios.post('http://10.137.11.217:8000/api/clientes', formD
                     value={avaliacao}
                     onChangeText={setAvaliacao}
                     multiline />
+
+                <TouchableOpacity style={styles.button} onPress={CadastroLivros}>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
+                </TouchableOpacity>
                     
                 <Text style={styles.linhaTitle}>◎━━━━━━━━━━━━━━━━◎.◈.◎━━━━━━━━━━━━━━━◎</Text>
                     
@@ -115,6 +151,7 @@ const response= await axios.post('http://10.137.11.217:8000/api/clientes', formD
                 </TouchableOpacity>
                 </View>
             </View>
+            </ScrollView>
         </View>
     );
 }
@@ -141,10 +178,10 @@ const styles = StyleSheet.create({
         paddingVertical: 30,
     },
     headerIcon: {
-        width: 300,
-        height: 300,
-        marginBottom: -90,
-        marginTop: -90
+        width: 200,
+        height: 200,
+        marginBottom: -60,
+        marginTop: -60
     },
     form: {
         padding: 10,
@@ -185,7 +222,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#2C7DA0',
         padding: 10,
         borderRadius: 5,
         alignItems: 'center'
@@ -197,6 +234,9 @@ const styles = StyleSheet.create({
     linhaTitle: {
         color:'#2C7DA0',
         marginTop: 10
+    },
+    scroll: {
+
     }
 });
 

@@ -1,10 +1,9 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React,{useEffect,useState} from "react";
-import { Button, StatusBar,StyleSheet,Text,TouchableOpacity,View } from "react-native";
+import { Button, StatusBar,StyleSheet,Text,TouchableOpacity,View, Image } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import Head from "../components/Head";
 import Footer from "../components/Footer";
-import { Image } from "react-native-reanimated/lib/typescript/Animated";
 
 interface EdicaoLivro{
     id:number;
