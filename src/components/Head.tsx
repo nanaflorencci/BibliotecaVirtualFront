@@ -4,7 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 function Head(): React.JSX.Element{
     return(
      <View style={styles.header}>
-        
+        <Text style={styles.headerText}>
+        ℂ𝕒𝕕𝕒𝕤𝕥𝕣𝕠 𝕕𝕖 𝕃𝕚𝕧𝕣𝕠𝕤
+        </Text>
      </View>
     );
 }
@@ -14,14 +16,13 @@ const styles= StyleSheet.create({
         flex:1
     },
     header:{
-        backgroundColor:'#C0C0C0',
         paddingVertical:10,
         alignItems:'center'
     },
     headerText:{
-        fontSize:20,
+        fontSize:30,
         fontWeight:'bold',
-        color:'white'
+        color:'#2C7DA0'
     }
 });
 

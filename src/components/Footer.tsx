@@ -5,13 +5,13 @@ function  Footer(): React.JSX.Element{
     return(
         <View style={styles.footer}>
    <TouchableOpacity >
-  <Image source={require('../assets/images/usuario.png')}style={styles.footerIcon}/>
+  <Image source={require('../assets/images/usuarioicon.png')}style={styles.footerIcon}/>
    </TouchableOpacity >
    <TouchableOpacity >
-   <Image source={require('../assets/images/catalogo.png')}style={styles.footerIcon}/>
+   <Image source={require('../assets/images/livro.png')}style={styles.footerIcon}/>
    </TouchableOpacity>
    <TouchableOpacity>
-   <Image source={require('../assets/images/compra.png')}style={styles.footerIcon}/>
+   <Image source={require('../assets/images/cesta.png')}style={styles.footerIcon}/>
    </TouchableOpacity>
 
 
@@ -24,15 +24,14 @@ const styles= StyleSheet.create({
         flexGrow: 1
     },
     footer: {
-        backgroundColor: '#C0C0C0',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'flex-end',
         marginTop: -5
     },
     footerIcon: {
-        width: 50,
-        height: 50
+        width: 40,
+        height: 40,
     }
 })
 

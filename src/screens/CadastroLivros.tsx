@@ -72,24 +72,27 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../assets/images/fundo.png')}/>
+            <ImageBackground source={require('../assets/images/fundo.png')}  style={styles.Fundo}/>
             
           
             <StatusBar backgroundColor="#000000" barStyle="light-content" />
             <Head/>
 
             <View style={styles.header}>
-            <Image source={require('../assets/images/capa.jpg')} style={styles.headerIcon} />
+            <Image source={require('../assets/images/icon.png')} style={styles.headerIcon} />
             </View>
 
             <ScrollView style={styles.scroll}>
 
             <View style={styles.form}>
 
-            <Text style={styles.linhaTitle}>◎━━━━━━━━━━━━━━━━◎.◈.◎━━━━━━━━━━━━━━━◎</Text>
-
-
             <TextInput
+                    style={styles.input}
+                    placeholder="Título:"
+                    value={titulo}
+                    onChangeText={setTitulo}/>
+
+                <TextInput
                     style={styles.input}
                     placeholder="Título:"
                     value={titulo}
@@ -157,9 +160,14 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
 }
 
 const styles = StyleSheet.create({
+    Fundo:{
+        height:1000,
+        flex:1
+    },
     container: {
-        backgroundColor: '#C0C0C0',
-        flex: 1
+      
+        flex: 1,
+        
     },
     inputGenero: {
         fontWeight: 'bold',
@@ -187,25 +195,19 @@ const styles = StyleSheet.create({
     menuList: {
         flexGrow: 1
     },
-    Background: {
-        flex: 1,
-        width: 413, 
-        height: 170,
-    },
     header: {
-        backgroundColor: '#C0C0C0',
         alignItems: 'center',
-        paddingVertical: 30,
+        paddingVertical: 20
     },
     headerIcon: {
-        width: 200,
-        height: 200,
-        marginBottom: -60,
-        marginTop: -80
+        width: 250,
+        height: 250,
+        marginBottom: -80,
+        marginTop: -100
     },
     form: {
         padding: 10,
-        backgroundColor: '#C0C0C0',
+      
         borderRadius: 10,
     },
     input: {
@@ -219,7 +221,7 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     imageButton: {
-        backgroundColor: '#000000',
+      
         padding: 10,
         borderRadius: 10,
         alignItems: 'center',
@@ -254,7 +256,7 @@ const styles = StyleSheet.create({
     },
     linhaTitle: {
         color:'#2C7DA0',
-        marginTop: 10,
+        marginBottom: 5,
     },
     scroll: {
 
