@@ -6,11 +6,11 @@ Este projeto contêm um site programado por estudantes da escola SESI a fim de a
 
 1. Clonar este repositório para o seu ambiente de desenvolvimento local:
 ```
- git clone https://github.com/nanaflorencci/BibliotecaVirtualFront.git
+ git clone https://github.com/nanaflorencci/SecretGardenLibraryFront.git
 ```
 2. Acessar o diretório do projeto:
 ```
-cd BibliotecaVirtualFront
+cd SecretGardenLibraryFront
 ```
 3. Inicializar o repositório:
 ```
