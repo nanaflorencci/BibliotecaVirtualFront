@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity, Button } from "react-native";
 import Footer from "../components/Footer";
 
-interface ListagemLivros {
+interface Listagem {
     id: string;
     titulo:string;
     autor:string;
@@ -16,14 +16,14 @@ interface ListagemLivros {
 };
 
 const Listagem: React.FC = () => {
-  const [livros, setLivros] = useState<ListagemLivros[]>([]);
+  const [livros, setLivros] = useState<Listagem[]>([]);
   const [elementVisible, setElementVisible] = useState(false);
 
   useEffect(() => {
-    ListagemLivros();
+    Listagem();
   }, []);
 
-  const ListagemLivros = async () => {
+  const Listagem = async () => {
     try {
       const response = await axios.get('http://10.137.11.217:8000/api/livros/listagem');
       if (response.status === 200) {
@@ -35,7 +35,7 @@ const Listagem: React.FC = () => {
     }
   }
 
-  const renderItem = ({ item }: { item: ListagemLivros}) => (
+  const renderItem = ({ item }: { item: Listagem}) => (
     <View style={styles.item} key={item.id}>
       <Text style={styles.itemTitulo}>{item.titulo}</Text>
       <Text style={styles.textAutor}>{item.autor}</Text>
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
 });
-export default ListagemLivros;
+export default Listagem;
