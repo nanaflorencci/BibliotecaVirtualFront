@@ -1,6 +1,6 @@
 # Projeto Secret Garden Library com React Native
 
-Este projeto contêm um site programado por estudantes da escola SESI a fim de aprofundar seus conhecimentos nas nas linguagens de TypeScript e React do curso de Análise de Sistemas do SENAI.
+Este projeto contêm um site programado por estudantes da escola SESI a fim de aprofundar seus conhecimentos nas nas linguagens de TypeScript e React do curso de Análise e Desenvolvimento de Sistemas do SENAI.
 
 ## Como utilizar este repositório
 
