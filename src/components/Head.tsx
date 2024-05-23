@@ -5,7 +5,7 @@ function Head(): React.JSX.Element{
     return(
      <View style={styles.header}>
         <Text style={styles.headerText}>
-        ℂ𝕒𝕕𝕒𝕤𝕥𝕣𝕠 𝕕𝕖 𝕃𝕚𝕧𝕣𝕠𝕤
+        °˖✧ ℂ𝕒𝕕𝕒𝕤𝕥𝕣𝕠 𝕕𝕖 𝕃𝕚𝕧𝕣𝕠𝕤 ✧˖°
         </Text>
      </View>
     );
@@ -20,7 +20,7 @@ const styles= StyleSheet.create({
         alignItems:'center'
     },
     headerText:{
-        fontSize:30,
+        fontSize:25,
         fontWeight:'bold',
         color:'#2C7DA0'
     }

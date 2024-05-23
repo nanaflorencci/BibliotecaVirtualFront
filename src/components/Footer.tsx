@@ -13,8 +13,6 @@ function  Footer(): React.JSX.Element{
    <TouchableOpacity>
    <Image source={require('../assets/images/cesta.png')}style={styles.footerIcon}/>
    </TouchableOpacity>
-
-
         </View>
     );
 }

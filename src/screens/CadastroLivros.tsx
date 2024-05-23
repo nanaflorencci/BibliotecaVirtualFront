@@ -72,7 +72,7 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../assets/images/fundo.png')}  style={styles.Fundo}/>
+            <ImageBackground source={require('../assets/images/fundo.png')}  style={styles.background}/>
             
           
             <StatusBar backgroundColor="#000000" barStyle="light-content" />
@@ -85,12 +85,6 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
             <ScrollView style={styles.scroll}>
 
             <View style={styles.form}>
-
-            <TextInput
-                    style={styles.input}
-                    placeholder="Título:"
-                    value={titulo}
-                    onChangeText={setTitulo}/>
 
                 <TextInput
                     style={styles.input}
@@ -160,14 +154,13 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
 }
 
 const styles = StyleSheet.create({
-    Fundo:{
+    background:{
         height:1000,
         flex:1
     },
     container: {
       
         flex: 1,
-        
     },
     inputGenero: {
         fontWeight: 'bold',
@@ -197,7 +190,7 @@ const styles = StyleSheet.create({
     },
     header: {
         alignItems: 'center',
-        paddingVertical: 20
+        paddingVertical: 30
     },
     headerIcon: {
         width: 250,
@@ -207,8 +200,6 @@ const styles = StyleSheet.create({
     },
     form: {
         padding: 10,
-      
-        borderRadius: 10,
     },
     input: {
         fontWeight: 'bold',
@@ -248,7 +239,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',
-        marginTop: 10
+        marginTop: 20,
+        marginBottom: 20
     },
     buttonText: {
         color: '#FFF',
@@ -256,7 +248,7 @@ const styles = StyleSheet.create({
     },
     linhaTitle: {
         color:'#2C7DA0',
-        marginBottom: 5,
+        marginBottom: 20,
     },
     scroll: {
 
