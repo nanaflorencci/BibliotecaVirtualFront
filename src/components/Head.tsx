@@ -4,9 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 function Head(): React.JSX.Element{
     return(
      <View style={styles.header}>
-        <Text style={styles.headerText}>
-               App Exemplo
-        </Text>
+        
      </View>
     );
 }
@@ -16,7 +14,7 @@ const styles= StyleSheet.create({
         flex:1
     },
     header:{
-        backgroundColor:'red',
+        backgroundColor:'#C0C0C0',
         paddingVertical:10,
         alignItems:'center'
     },

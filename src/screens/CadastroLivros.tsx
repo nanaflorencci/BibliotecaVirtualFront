@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import {ScrollView, Image, StatusBar, StyleSheet, Text, TextInput,TouchableOpacity, View } from "react-native";
+import {ScrollView, Image, StatusBar, StyleSheet, Text, TextInput,TouchableOpacity, View, ImageBackground } from "react-native";
+import Footer from "../components/Footer";
+import Head from "../components/Head";
 
 const CadastroLivros: React.FC = () => {
     const [titulo, setTitulo] = useState<string>('');
@@ -42,7 +44,7 @@ const CadastroLivros: React.FC = () => {
         return !Object.keys(newErrors).length;
       };
 
-    const CadastroProduto = async () => {
+    const CadastroLivros = async () => {
         try{
         const formData=new FormData();
         formData.append('titulo', titulo);
@@ -70,7 +72,11 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
 
     return (
         <View style={styles.container}>
+            <ImageBackground source={require('../assets/images/fundo.png')}/>
+            
+          
             <StatusBar backgroundColor="#000000" barStyle="light-content" />
+            <Head/>
 
             <View style={styles.header}>
             <Image source={require('../assets/images/capa.jpg')} style={styles.headerIcon} />
@@ -96,15 +102,15 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
                     onChangeText={setAutor}/>
 
                 <TextInput
-                    style={styles.input}
+                    style={styles.inputGenero}
                     placeholder="Gênero:"
                     value={genero}
                     onChangeText={setGenero}
                     multiline />
                     
                 <TextInput
-                    style={styles.input}
-                    placeholder="Data de lançamento:"
+                    style={styles.inputDT}
+                    placeholder="Data:"
                     value={data_lancamento}
                     onChangeText={setDataLancamento}
                     multiline />
@@ -133,23 +139,17 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
                 <TouchableOpacity style={styles.button} onPress={CadastroLivros}>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
+
+                <View style={styles.menuList}></View>
+            
                     
                 <Text style={styles.linhaTitle}>◎━━━━━━━━━━━━━━━━◎.◈.◎━━━━━━━━━━━━━━━◎</Text>
-                    
-                <View style={styles.footer}>
+                
+                <View>
 
-                <TouchableOpacity>
-                <Image source={require('../assets/images/usuario.png')} style={styles.footerIcon}/>
-                </TouchableOpacity>
-
-                <TouchableOpacity>
-                    <Image source={require('../assets/images/catalogo.png')} style={styles.footerIcon} />
-                </TouchableOpacity>
-
-                <TouchableOpacity>
-                <Image source={require('../assets/images/compra.png')} style={styles.footerIcon}/>
-                </TouchableOpacity>
                 </View>
+                <View style={styles.menuList}></View>
+            <Footer/>
             </View>
             </ScrollView>
         </View>
@@ -158,19 +158,39 @@ const response= await axios.post('http://10.137.11.217:8000/api/livros/cadastro'
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#C0C0C0' ,
+        backgroundColor: '#C0C0C0',
         flex: 1
     },
-    footer: {
-        backgroundColor: '#C0C0C0',
-        flexDirection: "row",
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingVertical: 10
+    inputGenero: {
+        fontWeight: 'bold',
+        height: 50,
+        borderWidth: 3,
+        borderColor: '#2C7DA0',
+        marginBottom: 5,
+        paddingHorizontal: 10,
+        borderRadius: 10,
+        marginTop: 10,
+        width:'52%'
     },
-    footerIcon: {
-        height: 40,
-        width: 40
+    inputDT: {
+        fontWeight: 'bold',
+        height: 50,
+        borderWidth: 3,
+        borderColor: '#2C7DA0',
+        marginBottom: 5,
+        paddingHorizontal: 10,
+        borderRadius: 10,
+        marginTop: -55,
+        width:'40%',
+        marginLeft:220
+    },
+    menuList: {
+        flexGrow: 1
+    },
+    Background: {
+        flex: 1,
+        width: 413, 
+        height: 170,
     },
     header: {
         backgroundColor: '#C0C0C0',
@@ -181,7 +201,7 @@ const styles = StyleSheet.create({
         width: 200,
         height: 200,
         marginBottom: -60,
-        marginTop: -60
+        marginTop: -80
     },
     form: {
         padding: 10,
@@ -225,7 +245,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#2C7DA0',
         padding: 10,
         borderRadius: 5,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 10
     },
     buttonText: {
         color: '#FFF',
@@ -233,7 +254,7 @@ const styles = StyleSheet.create({
     },
     linhaTitle: {
         color:'#2C7DA0',
-        marginTop: 10
+        marginTop: 10,
     },
     scroll: {
 

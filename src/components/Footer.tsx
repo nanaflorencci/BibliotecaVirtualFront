@@ -1,43 +1,38 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import {Image,StyleSheet,  TouchableOpacity, View } from "react-native";
 
 function  Footer(): React.JSX.Element{
-    const navigation = useNavigation();
     return(
         <View style={styles.footer}>
-   <TouchableOpacity onPress={()=>navigation.navigate('')}>
-  <Image source={require('../assets/images/')}/>
+   <TouchableOpacity >
+  <Image source={require('../assets/images/usuario.png')}style={styles.footerIcon}/>
    </TouchableOpacity >
-   <TouchableOpacity onPress={()=>navigation.navigate('')}>
-   <Image source={require('../assets/images/')}/>
+   <TouchableOpacity >
+   <Image source={require('../assets/images/catalogo.png')}style={styles.footerIcon}/>
    </TouchableOpacity>
    <TouchableOpacity>
-   <Image source={require('../assets/images/')}/>
+   <Image source={require('../assets/images/compra.png')}style={styles.footerIcon}/>
    </TouchableOpacity>
-   <TouchableOpacity onPress={()=> navigation.navigate('')}>
-   <Image source={require('../assets/images/')}/>
-   </TouchableOpacity>
+
 
         </View>
     );
 }
 
 const styles= StyleSheet.create({
-    menuList:{
-        flexGrow:1
+    menuList: {
+        flexGrow: 1
     },
-    footer:{
-        borderTopWidth: 0.2,
-        backgroundColor:'white',
-        flexDirection:'row',
-        justifyContent:'space-around',
-        alignItems:'flex-end',
-        paddingVertical:10
+    footer: {
+        backgroundColor: '#C0C0C0',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'flex-end',
+        marginTop: -5
     },
-    footerIcon:{
-        width:30,
-        height:30
+    footerIcon: {
+        width: 50,
+        height: 50
     }
 })
 
