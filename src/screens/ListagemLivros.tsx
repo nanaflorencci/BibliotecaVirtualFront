@@ -1,138 +1,193 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity, Button } from "react-native";
+import axios from "axios";
+import { Image, StyleSheet, Text, TouchableOpacity, StatusBar, FlatList, View, TextInput, ImageBackground } from "react-native";
 import Footer from "../components/Footer";
+import Head from "../components/Head";
+import { ScrollView } from "react-native-gesture-handler";
+import HeadListagem from "../components/HeadListagem";
 
-interface Listagem {
-    id: string;
-    titulo:string;
-    autor:string;
-    data_lancamento:string;
-    editora:string;
-    sinopse:string;
-    genero:string;
-    avaliacao:string;
-    image:any;
-};
 
-const Listagem: React.FC = () => {
-  const [livros, setLivros] = useState<Listagem[]>([]);
-  const [elementVisible, setElementVisible] = useState(false);
 
-  useEffect(() => {
-    Listagem();
-  }, []);
 
-  const Listagem = async () => {
-    try {
-      const response = await axios.get('http://10.137.11.217:8000/api/livros/listagem');
-      if (response.status === 200) {
-        setLivros(response.data.data);
-        console.log(livros);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+function Listagem(): React.JSX.Element {
+    const [produto, setProduto] = useState<any[]>([]);
+   
+    const [erro, setErro] = useState<string>("");
 
-  const renderItem = ({ item }: { item: Listagem}) => (
-    <View style={styles.item} key={item.id}>
-      <Text style={styles.itemTitulo}>{item.titulo}</Text>
-      <Text style={styles.textAutor}>{item.autor}</Text>
-      <Text style={styles.textGenero}>{item.genero}</Text>
-      <Text style={styles.textData}>{item.data_lancamento}</Text>
-      {elementVisible ? (
-        <View >
-      <Text style={styles.textEditora}>{item.editora} </Text>
-      <Text style={styles.textSinopse}>{item.sinopse}</Text>
-      <Text style={styles.textAvaliacao}>{item.avaliacao}</Text>
-      </View >
-      ) : null}
-            <TouchableOpacity onPress={() => setElementVisible(!elementVisible)}>
-          <Image source={require('../assets/images/botao.png')} style={styles.button} />
-        </TouchableOpacity>
-    </View>
-  );
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get('http://10.137.11.217/api/livros/visualizar');
+                setProduto(response.data.dados);
+             } catch (error) {
+                setErro("Ocorreu um erro");
+                console.log(error);
+            }
+        }
 
-  return (
-    <View style={styles.container}>
-      <View>
-        <TouchableOpacity>
-          <Image source={require('../assets/images/capa.png')} style={styles.headerIcon} />
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        data={livros}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
+        fetchData();
+    }, []);
 
-    </View>
-  );
-};
+    const renderItem = ({ item }: { item: Livros }) => (
+        <TouchableOpacity style={styles.item}>
+            <Text style={styles.textTitulo}>{item.titulo}</Text>
+            <Text style={styles.textAutor}>{item.autor}</Text>
+            <Text style={styles.textData}>{item.data_lancamento}</Text>
+            <Text style={styles.textEditora}>{item.editora}</Text>
+            <Text style={styles.textSinopse}>{item.sinopse}</Text>
+            <Text style={styles.textGenero}>{item.genero}</Text>
+            <Text style={styles.textAvaliacao}>{item.avaliacao}</Text>
+        </TouchableOpacity>    
+    );
+    
+
+    return (
+        
+            <View style={styles.container}>
+
+              <ImageBackground source={require('../assets/images/fundo.png')}  style={styles.background}/>
+            <StatusBar backgroundColor='#000000' barStyle='light-content' />
+            <HeadListagem/>
+
+
+            <View style={styles.header}>
+            <Image source={require('../assets/images/icon.png')} style={styles.headerIcon} />
+            </View>
+
+            <View style={styles.alinhapesquisa} >
+                <Image style={styles.pesquisaicon} source={require('../assets/images/lupinha.png')} />
+                
+                <TextInput style={styles.pesquisa} placeholder="Pesquisar..." />
+            </View>
+
+            <FlatList style={styles.container}
+                showsVerticalScrollIndicator={false}
+                data={produto}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.titulo.toString()}
+            />
+            <Text style={styles.linhaTitle}>◎━━━━━━━━━━━━━━━━━◎.◈.◎━━━━━━━━━━━━━━━◎</Text>
+
+            <Footer/>
+            </View>
+
+    );
+
+}
 
 const styles = StyleSheet.create({
-   container: {
-        backgroundColor: '#000000' ,
-        flex: 1
+    container: {
+         flex: 1
+     },
+     linhaTitle: {
+      color:'#2C7DA0',
+      marginBottom: -45,
+      marginTop: 40
+  },
+     scroll: {},
+     background:{
+      height:1000,
+      flex:1
     },
-    button: {
-        
-    },
+     button: {},
+     header: {
+      alignItems: 'center',
+      paddingVertical: 30
+  },
     headerIcon: {
-        width: 300,
-        height: 300,
-        marginBottom: -90,
-        marginTop: -90
-    },
-    item: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    itemTitulo: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    textAutor: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    textGenero: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    textData: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    textEditora: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    textSinopse: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    textAvaliacao: {
-        fontSize: 20,
-        color: '#FFF',
-        marginLeft: 65
-    },
-    image: {
-        height: 100,
-        width: 170,
-        borderRadius: 10,
+      width: 250,
+      height: 250,
+      marginBottom: -20,
+      marginTop: -100
+  },
+     item: {
+        backgroundColor: '#C0C0C0',
+        padding: 19,
+        marginVertical: 7,
+        marginHorizontal: 15,
+        borderRadius: 19,
         borderWidth: 3,
+        borderColor: '#772B39',
+        marginTop: 30
+     },
+     textTitulo: {
+        fontSize: 30,
+        color: 'white',
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginTop: 15
+     },
+     textAutor: {
+        fontSize: 30,
+        color: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+     },
+     textGenero: {
+        fontSize: 30,
+        color: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+     },
+     textData: {
+        fontSize: 30,
+        color: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+     },
+     textEditora: {
+        fontSize: 30,
+        color: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+     },
+     textSinopse: {
+        fontSize: 30,
+        color: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+     },
+     textAvaliacao: {
+        fontSize: 30,
+        color: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+     },
+     image: {
+         height: 100,
+         width: 170,
+         borderRadius: 10,
+         borderWidth: 3,
+         marginLeft: 'auto',
+         marginRight: 'auto',
+         marginTop: 15
+     },
+     pesquisa: {
+        fontSize: 13,
+        borderWidth: 3,
+        borderColor: '#2C7DA0',
+        borderRadius: 100,
+        alignItems: 'center',
+        width: '78%',
+        paddingLeft: 50,
+        marginTop: -50,
+        marginLeft: -10
     },
-});
-export default Listagem;
+    alinhapesquisa: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop:20,
+    },
+    pesquisaicon: {
+        width: 90,
+        height: 90,
+        marginTop: -40
+    },
+    linha: {
+        color: 'white',
+        marginTop: -8,
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    },
+ });
+ export default Listagem;

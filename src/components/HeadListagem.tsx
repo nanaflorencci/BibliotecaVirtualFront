@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-function Head(): React.JSX.Element{
+function HeadListagem(): React.JSX.Element{
     return(
      <View style={styles.header}>
         <Text style={styles.headerText}>
-        °˖✧ ℂ𝕒𝕕𝕒𝕤𝕥𝕣𝕠 𝕕𝕖 𝕃𝕚𝕧𝕣𝕠𝕤 ✧˖°
+        °˖✧ 𝕃𝕚𝕤𝕥𝕒𝕘𝕖𝕞 𝕕𝕖 𝕃𝕚𝕧𝕣𝕠𝕤 ✧˖°
         </Text>
      </View>
     );
@@ -18,7 +18,7 @@ const styles= StyleSheet.create({
     header:{
         paddingVertical:10,
         alignItems:'center',
-        marginTop: 35
+        marginTop: -240
     },
     headerText:{
         fontSize:25,
@@ -27,4 +27,4 @@ const styles= StyleSheet.create({
     }
 });
 
-export default Head;
+export default HeadListagem;

@@ -158,6 +158,9 @@ const styles = StyleSheet.create({
         height:1000,
         flex:1
     },
+    menuList: {
+        flex: 1
+    },
     container: {
       
         flex: 1,
@@ -185,9 +188,6 @@ const styles = StyleSheet.create({
         width:'40%',
         marginLeft:220
     },
-    menuList: {
-        flexGrow: 1
-    },
     header: {
         alignItems: 'center',
         paddingVertical: 30
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
         width: 250,
         height: 250,
         marginBottom: -80,
-        marginTop: -100
+        marginTop: -80
     },
     form: {
         padding: 10,
@@ -206,41 +206,18 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 3,
         borderColor: '#2C7DA0',
-        marginBottom: 5,
+        marginBottom: 10,
         paddingHorizontal: 10,
         borderRadius: 10,
-        marginTop: 10
-    },
-    imageButton: {
-      
-        padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-        marginBottom: 5,
-    },
-    imageButtonText: {
-        color: '#FFF',
-        fontWeight: 'bold',
-    },
-    imagemSelecionada: {
-        width: 200,
-        height: 200,
-        resizeMode: 'cover',
-        borderRadius: 1000,
-        marginBottom: 10,
-        borderWidth: 10,
-        borderColor: '#000000',
-    },
-    alinhamentoImagemSelecionada: {
-        alignItems: 'center'
+        marginTop: 5
     },
     button: {
         backgroundColor: '#2C7DA0',
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',
-        marginTop: 20,
-        marginBottom: 20
+        marginTop: -2,
+        marginBottom: -25
     },
     buttonText: {
         color: '#FFF',
@@ -248,7 +225,8 @@ const styles = StyleSheet.create({
     },
     linhaTitle: {
         color:'#2C7DA0',
-        marginBottom: 20,
+        marginBottom: -45,
+        marginTop: 40
     },
     scroll: {
 

@@ -1,4 +1,4 @@
-interface ListagemLivros {
+interface Livros {
     titulo:string;
     autor:string;
     data_lancamento:string;

@@ -25,7 +25,8 @@ const styles= StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'flex-end',
-        marginTop: -5
+        marginTop: 50,
+        marginBottom: 5
     },
     footerIcon: {
         width: 40,
