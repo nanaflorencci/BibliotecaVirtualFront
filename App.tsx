@@ -5,8 +5,8 @@ import EdicaoLivro from './src/screens/EdicaoLivros';
 
 function App(): JSX.Element{
   return(
-    //<CadastroLivros/>
-    <Listagem/>
+    <CadastroLivros/>
+    //<Listagem/>
     //<EdicaoLivro/>
     );
 }
