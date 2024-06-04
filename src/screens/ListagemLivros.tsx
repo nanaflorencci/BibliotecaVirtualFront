@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Image, StyleSheet, Text, TouchableOpacity, StatusBar, FlatList, View, TextInput, ImageBackground } from "react-native";
 import Footer from "../components/Footer";
-import Head from "../components/Head";
+import HeadCadastro from "../components/HeadCadastro";
 import { ScrollView } from "react-native-gesture-handler";
 import HeadListagem from "../components/HeadListagem";
 
@@ -53,6 +53,7 @@ function Listagem(): React.JSX.Element {
             <View style={styles.header}>
             <Image source={require('../assets/images/icon.png')} style={styles.headerIcon} />
             </View>
+            
 
             <View style={styles.alinhapesquisa} >
                 <Image style={styles.pesquisaicon} source={require('../assets/images/lupinha.png')} />
@@ -66,11 +67,9 @@ function Listagem(): React.JSX.Element {
                 renderItem={renderItem}
                 keyExtractor={(item) => item.titulo.toString()}
             />
-            <Text style={styles.linhaTitle}>◎━━━━━━━━━━━━━━━━━◎.◈.◎━━━━━━━━━━━━━━━◎</Text>
 
             <Footer/>
             </View>
-
     );
 
 }
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
   },
      scroll: {},
      background:{
-      height:1000,
+      height:760,
       flex:1
     },
      button: {},
